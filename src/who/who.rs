@@ -293,7 +293,9 @@ fn current_tty() -> String {
 impl Who {
     fn exec(&mut self) {
         let run_level_chk = |record: i16| {
+            #[allow(unused_assignments)]
             let mut res = false;
+
             #[cfg(any(target_os = "macos", target_os = "ios", target_os = "linux", target_os = "android"))]
             {
                 res = record == utmpx::RUN_LVL;
